@@ -81,16 +81,17 @@ class BinarySearchTree {
     let isLeftChild = false;
 
     /** 找到删除节点 */
-    while(data != currentNode.data){
-      parentNode = currentNode;
-      if(data < currentNode.data){
-        isLeftChild = true;
-        currentNode = currentNode.left;
-      }else if(data > currentNode.data){
-        isLeftChild = false;
-        currentNode = currentNode.right;
-      }
-    }
+    // while(data != currentNode.data){
+    //   parentNode = currentNode;
+    //   if(data < currentNode.data){
+    //     isLeftChild = true;
+    //     currentNode = currentNode.left;
+    //   }else if(data > currentNode.data){
+    //     isLeftChild = false;
+    //     currentNode = currentNode.right;
+    //   }
+    // }
+    currentNode = this.search(data);
     /** 左右节点皆为空 */
     if(currentNode.left===null && currentNode.right===null){
       if(currentNode == this.root){
@@ -118,7 +119,7 @@ class BinarySearchTree {
       }else{
         parentNode.right = currentNode.left;
       }
-    }else{/** 左右节点都不为空 */
+    }else{/** 左右节点都不为空，删除节点的后继者是在其右节点树中最小的节点*/
       let parent = currentNode;
       let successor = currentNode.right;
       while(successor.left){
@@ -154,8 +155,9 @@ bst.insert(7);
 bst.insert(14);
 bst.insert(13);
 
-let root = bst.search(8);
-bst.print(root);
+// console.log(bst.root);
+
+bst.print(bst.root);
 bst.remove(3);
 console.log("========");
-bst.print(root);
+bst.print(bst.root);
