@@ -79,21 +79,7 @@ class BinarySearchTree {
     let currentNode = this.root;
     let parentNode = this.root;
     let isLeftChild = false;
-    /**
-     * 后继者节点
-     * @param {*Node} node 
-     */
-    let successor = function(node) {
-      if(node.left===null && node.right===null){
-        return node;
-      }
-      if(node.left !== null){
-        return node.left;
-      }
-      if(node.right !== null && node.left === null){
-        return successor(node.right);
-      }
-    }
+
     /** 找到删除节点 */
     while(data != currentNode.data){
       parentNode = currentNode;
@@ -102,7 +88,7 @@ class BinarySearchTree {
         currentNode = currentNode.left;
       }else if(data > currentNode.data){
         isLeftChild = false;
-        currentNode = currentNode.rigth;
+        currentNode = currentNode.right;
       }
     }
     /** 左右节点皆为空 */
@@ -133,31 +119,43 @@ class BinarySearchTree {
         parentNode.right = currentNode.left;
       }
     }else{/** 左右节点都不为空 */
-      if(currentNode == this.root){
-        this.root = successor(currentNode.right);        
-      }else if(isLeftChild){
-        parentNode.left = successor(currentNode.right);
-      }else{
-        parentNode.right = successor(currentNode.right);
+      let parent = currentNode;
+      let successor = currentNode.right;
+      while(successor.left){
+        parent = successor;
+        successor = successor.left;
       }
-      successor.left = currentNode.left;
+      currentNode.data = successor.data;
+      if(parent.left === successor){
+        parent.left = successor.right;
+      }else{
+        parent.right = successor.right;
+      }
     }
   }
 
-  print(data) {
-    
+  print(node) {
+    if(node){
+      this.print(node.left);
+      console.log(node.data);
+      this.print(node.right);
+    }
   }
 }
 
 let bst = new BinarySearchTree();
+bst.insert(8);
+bst.insert(3);
+bst.insert(10);
+bst.insert(1);
+bst.insert(6);
 bst.insert(4);
 bst.insert(7);
-bst.insert(3);
-bst.insert(6);
-bst.insert(5);
-bst.insert(2);
-console.log(bst);
-let a = bst.search(6);
-console.log(a);
+bst.insert(14);
+bst.insert(13);
+
+let root = bst.search(8);
+bst.print(root);
 bst.remove(3);
-console.log(bst);
+console.log("========");
+bst.print(root);
