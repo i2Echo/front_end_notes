@@ -4,6 +4,19 @@
 */
 "use strict";
 
+export default {
+  getRandomNum,
+  checkPalindrom,
+  findMaxDuplicateChar,
+  unique,
+  bubbleSort,
+  quickSort,
+  swap,
+  swap1,
+  fabonacci,
+  fabonacci1,
+}
+
 /**
  * 功能：获取[n,m]间的随机数
  * @param {*Number} max

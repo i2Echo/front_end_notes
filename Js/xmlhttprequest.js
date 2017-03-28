@@ -20,7 +20,7 @@ let ajax = function(method, url, data){
       }
     };
     request.open(method, url);
-    requeat.send(data);
+    request.send(data);
   })
 }
 
