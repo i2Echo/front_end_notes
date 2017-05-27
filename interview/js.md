@@ -6,7 +6,7 @@
 
 #### 两大数据类型
 * 原始类型：Boolean, Null, Undefined, String, Number, Symbol(ES6新增)
-* Object类型：Object
+* 引用类型：Object
 
 #### 扩展：
 * null与undefined区别：null表示变量值为空，undefined说明变量未定义。
@@ -20,6 +20,7 @@
 > 2. 函数内部可以引用外部的参数和变量
 > 3. 参数和变量不会被垃圾回收机制回收
 * 闭包的作用：
-
+  - 创建私有变量和方法
+  - 避免全局变量污染
 
 
