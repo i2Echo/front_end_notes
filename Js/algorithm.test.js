@@ -10,7 +10,3 @@ import {
   fabonacci,
   fabonacci1,
 } from "algrithm"
-
-{() =>{
-
-}}();

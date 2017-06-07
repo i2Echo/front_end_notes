@@ -40,7 +40,13 @@ html{font-size:23.5px}}
   clear: both;
   overflow: hidden;
 }
-
+.clearfix:after{
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 /*
 ** 功能：块居中 block-center
 ** class：.bc .w100
